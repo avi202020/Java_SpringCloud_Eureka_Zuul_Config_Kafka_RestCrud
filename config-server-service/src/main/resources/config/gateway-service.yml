@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+zuul:
+  routes:
+    todos:
+      path: /api/todos/**
+      service-id: todo-service
+      strip-prefix: true # already true by default
+
+ribbon:
+  eureka:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    root: warn
+    com.melardev: trace
+    org.springframework.cloud.netflix.zuul: trace
